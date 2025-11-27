@@ -44,7 +44,7 @@
         function falar(texto) {
             const discurso = new SpeechSynthesisUtterance(texto);
             discurso.lang = "pt-BR";
-            discurso.rate = 2;
+            discurso.rate = 1,2;
             window.speechSynthesis.speak(discurso);
             document.getElementById("respostatexto").innerText = texto;
         }
@@ -74,4 +74,3 @@
     </script>
 </body>
 </html>
-
