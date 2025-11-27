@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            background-color: #0e0f0eff;
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="chatbox">
+        <h2> Chatbot por Voz</h2>
+        <button onclick="ouvir()">Falar Agora</button>
+        <div id="respostatexto"></div>
+    </div>
+
+    <script>
+        // PERGUNTA 
+
+        //qual o hormonio responsavel pela producao de leite materno
+        //qual a idade gestacional de um rn prematuro
+        //qual o nome dado a inflamacao na mama durante a amamentacao
+        //em qual parte da mama fica armazenado o leite materno
+        //o colostro é considerado rico em que
+        const pergunta = [
+    "materno",
+    "prematuro",
+    "mama",
+    "leite",
+    "colostro"
+];
+
+
+        // resposta
+        const resposta = ["Prolactina", "Menos de 37 semanas", "Mastite", "Alvéolos", "Imunoglobulina"]; 
+
+        //FALAR EM VOZ
+        function falar(texto) {
+            const discurso = new SpeechSynthesisUtterance(texto);
+            discurso.lang = "pt-BR";
+            discurso.rate = 2;
+            window.speechSynthesis.speak(discurso);
+            document.getElementById("respostatexto").innerText = texto;
+        }
+
+        //Mostra a resposta na tela 
+        function ouvir() {
+            const reconhecer = new webkitSpeechRecognition();
+            reconhecer.lang = "pt-BR";
+            reconhecer.start();
+
+            reconhecer.onresult = function(event) {
+                const textoFalado = event.results[0][0].transcript.toLowerCase();
+                console.log("Fala reconhecida:", textoFalado);
+
+
+                for (let i = 0; i < pergunta.length; i++) {
+                    if (textoFalado.includes(pergunta[i])) {
+                        falar(resposta[i]);
+                        return;
+                    }
+                }
+
+                falar("Desculpe, eu não entendi.");
+            };
+
+        }
+    </script>
+</body>
+</html>
