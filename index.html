@@ -29,7 +29,7 @@
         //em qual parte da mama fica armazenado o leite materno
         //o colostro é considerado rico em que
         const pergunta = [
-    "materno",
+    "hormonio",
     "prematuro",
     "mama",
     "leite",
@@ -74,3 +74,4 @@
     </script>
 </body>
 </html>
+
