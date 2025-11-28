@@ -15,6 +15,8 @@
 </head>
 <body>
     <div class="chatbox">
+        <img src="gestacao.jpg" alt="gestação" width="400" style="display:block; margin:20px auto; border-radius:10px;">
+
         <h2> Chatbot por Voz</h2>
         <button onclick="ouvir()">Falar Agora</button>
         <div id="respostatexto"></div>
@@ -74,4 +76,5 @@
     </script>
 </body>
 </html>
+
 
